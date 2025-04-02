@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="TransientTables: Evaluating LLMs' Reasoning on Temporally Evolving Semi-structured
+        Tables">
+  <meta name="keywords" content="TransientTables, TemporalReasoning">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TransientTables: Evaluating LLMs' Reasoning on Temporally Evolving Semi-structured
+    Tables</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- <script async src=""></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script> -->
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">TransientTables: Evaluating LLMs' Reasoning on Temporally Evolving Semi-structured
+            Tables</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://abhilashreddys.github.io/">Abhilash Shankarampeta</a><sup>1*</sup>,</span>
+            <span class="author-block">
+              <a href="https://www.linkedin.com/in/harshmahajan13/">Harsh Mahajan</a><sup>2*</sup>,</span>
+            <span class="author-block">
+              <a href="https://tushaarkataria.github.io/">Tushar Kataria</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.cis.upenn.edu/~danroth/">Dan Roth</a><sup>3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://vgupta123.github.io/">Vivek Gupta</a><sup>4</sup>,
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>UC San Diego</span>
+            <span class="author-block"><sup>2</sup>University of Utah</span>
+            <span class="author-block"><sup>3</sup>University of Pennsylvania</span>
+            <span class="author-block"><sup>4</sup>Arizona State University</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <!-- <span class="link-block">
+                <a href="https://arxiv.org/pdf/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span> -->
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <!-- <span class="link-block">
+                <a href="https://github.com/google/nerfies"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span> -->
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://github.com/harsh1399/TransientTables"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div style="text-align: center;">
+        <img src="./static/images/Comparison-ICT_upsacled.png" style="max-width: 70%; height: auto;"/>
+      <h2 class="subtitle has-text-centered">
+        An example from the <span class="dnerf"></span>TransientTables</span>
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Humans continuously make new discoveries, and understanding temporal sequence of 
+            events leading to these breakthroughs is essential for advancing science and society. 
+            This ability to reason over time allows us to identify future steps 
+            and understand the effects of financial and political decisions on our lives. 
+            However, large language models (LLMs) are typically trained on static datasets, 
+            limiting their ability to perform effective temporal reasoning. 
+            </p>
+          <p>
+            To assess the temporal reasoning capabilities of LLMs, we present the <span class="dnerf"></span>TransientTables</span> dataset, 
+            which comprises <b>3,971</b> questions derived from over <b>14,000</b> tables, spanning <b>1,238</b> entities across multiple time periods. 
+            We introduce a template-based question-generation pipeline that harnesses LLMs to refine both templates and questions. 
+            Additionally, we establish baseline results using state-of-the-art LLMs to create a benchmark. 
+            We also introduce novel modeling strategies centered around task decomposition, enhancing LLM performance.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/0FssZehsIFk?si=LNSfs6gnR1C5v1r9"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Dataset Creation</h2>
+        <div class="content has-text-justified">
+          <p>
+            The <span class="dnerf"></span>TransientTables</span> dataset was created using a combination of automated and manual processes. 
+            It includes a diverse set of tables spanning multiple domains and time periods, ensuring a comprehensive 
+            evaluation of temporal reasoning capabilities. The dataset generation pipeline leverages LLMs for 
+            template-based question generation and refinement.
+          </p>
+        </div>
+        <div style="text-align: center;">
+          <img src="./static/images/TransientTables - Dataset.png" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4">Question Categorization</h2>
+        <div class="content has-text-justified">
+          <p>
+            We categorized the questions in our dataset along several dimensions:
+          </p>
+          <p>
+            In terms of time information, 2,985 questions have implicit temporal references while 986 have explicit temporal references.
+            We also classified questions by reasoning type, including extraction, counting, comparison, and others.
+            Finally, we assessed complexity based on whether questions involved a single key (2,113 questions) or multiple keys (1,858 questions) across the timeline.
+          </p>
+        </div>
+        <div style="text-align: center;">
+          <img src="./static/images/Tables Per Entities vs. Category.png" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+        </div>
+        <div style="text-align: center;">
+          <img src="./static/images/Reasoning Operation.png" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-5">Modeling Techniques</h2>
+        <div class="content has-text-justified">
+          <p>
+            For our evaluation approach, we explored several modeling techniques:
+          </p>
+          <p>
+            We varied the information granularity from the closed book (no tables provided) to a single table, full timeline, and Oracle timeline settings. 
+            This helped us understand the models' reliance on contextual information versus their pre-trained knowledge.
+          </p>
+          <p>
+            We also investigated four task decomposition approaches:
+          </p>
+          <ul>
+            <li>Without Decomposition (WD): Direct answer generation</li>
+            <li>Information Retrieval (IR): Table retrieval + Answer generation</li>
+            <li>Information Extraction (IE): Key extraction + Answer generation</li>
+            <li>Information Retrieval-Extraction (IRE): Table retrieval + Key extraction + Answer
+              generation</li>
+          </ul>
+        </div>
+        <div style="text-align: center;">
+            <img src="./static/images/TransientTables - Modelling.png" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3">Results</h2>
+      <div class="content has-text-justified">
+        <p>
+          The following carousel showcases key plots from our results, highlighting the performance of various modeling techniques and insights derived from the dataset.
+        </p>
+      <div id="results-carousel" class="carousel results-carousel">
+        
+        <div class="carousel-item">
+          <img src="./static/images/perf_gpt4o_transienttables.png">
+        </div>
+        <div class="carousel-item">
+          <img src="./static/images/TransientTables - Models Performance (1).png">
+        </div>
+        <div class="carousel-item">
+          <img src="./static/images/TransientTables - Temporal.png">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const carousels = bulmaCarousel.attach('#results-carousel', {
+      slidesToScroll: 1,
+      slidesToShow: 1,
+      infinite: true,
+      autoplay: true,
+      autoplaySpeed: 3000,
+    });
+  });
+</script>
+
+  </div>
+</section>
+
+
+<!-- <section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{park2021nerfies,
+  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
+  title     = {Nerfies: Deformable Neural Radiance Fields},
+  journal   = {ICCV},
+  year      = {2021},
+}</code></pre>
+  </div>
+</section> -->
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="https://github.com/harsh1399/TransientTables" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
